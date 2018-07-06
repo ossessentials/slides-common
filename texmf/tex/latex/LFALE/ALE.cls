@@ -1,4 +1,4 @@
-\ProvidesClass{CALE}
+\ProvidesClass{ALE}
 \LoadClass{book}
 
 \newcommand{\dimensionsclass}{
