@@ -32,7 +32,7 @@ SLIDECOVER = $(COURSE)-COVER-SLIDE
 
 .PHONY: $(COURSE) slides SLIDES release RELEASE \
 	clean veryclean help COVERS covers \
-	findoverfull FINDOVERFULL 
+	findoverfull FINDOVERFULL
 
 ifneq "$(DRYRUN)" ""
 ROPTS += --dry-run
@@ -47,18 +47,18 @@ RSYNC	= rsync -crlptvHxP --inplace --exclude old $(ROPTS)
 class:	$(COURSE).pdf
 
 $(COURSE).pdf: $(SRC_TEXFILES) $(FRONTCOVER).pdf
-	pdflatex $(COURSE) 
+	pdflatex $(COURSE)
 	makeindex $(COURSE)
-	pdflatex $(COURSE) > /dev/null  
+	pdflatex $(COURSE) > /dev/null
 	makeindex $(COURSE) > /dev/null
 	makeindex $(COURSE) > /dev/null
-	pdflatex $(COURSE) > /dev/null  
+	pdflatex $(COURSE) > /dev/null
 
 slides SLIDES: $(SLIDES).pdf
 $(SLIDES).pdf:  $(SRC_TEXFILES) $(SLIDECOVER).pdf
-	echo "\def\slideoutput{1} \input{$(COURSE)}" | pdflatex -jobname $(SLIDES)	
+	echo "\def\slideoutput{1} \input{$(COURSE)}" | pdflatex -jobname $(SLIDES)
 	makeindex $(SLIDES)
-	echo "\def\slideoutput{1} \input{$(COURSE)}" | pdflatex -jobname $(SLIDES)	
+	echo "\def\slideoutput{1} \input{$(COURSE)}" | pdflatex -jobname $(SLIDES)
 	makeindex $(SLIDES) > /dev/null
 	makeindex $(SLIDES) > /dev/null
 	echo "\def\slideoutput{1} \input{$(COURSE)}" | pdflatex -jobname $(SLIDES)
@@ -67,7 +67,7 @@ $(SLIDES).pdf:  $(SRC_TEXFILES) $(SLIDECOVER).pdf
 RELEASE_DIR=./RELEASE
 #PDFS = $(subst .pdf,,$(wildcard *.pdf))
 
-RELEASE release: all 
+RELEASE release: all
 	echo Making Release VERSION = $(VERSION)
 	@if [ ! -d $(RELEASE_DIR) ] ; then mkdir $(RELEASE_DIR) ; fi
 
@@ -95,29 +95,29 @@ COVERS covers: $(FRONTCOVER).pdf $(BACKCOVER).pdf $(SLIDECOVER).pdf
 #$(FRONTCOVER).pdf: $(INPUT)
 # remove $(INPUT) target as it malfunctions on RHEL6
 $(FRONTCOVER).pdf:
-	echo \\newcommand{\\coverheight}{11.0in} > $(FRONTCOVER).tex  
-	echo \\documentclass{CALEcover} >> $(FRONTCOVER).tex  
-	echo \\title{$(COURSETITLE)}\\subtitle{$(COURSE)}\\myversion{$(VERSION)} >> $(FRONTCOVER).tex  
-	echo \\begin{document}\\makefront\\end{document} >> $(FRONTCOVER).tex  
-	pdflatex $(FRONTCOVER) && pdflatex $(FRONTCOVER) && pdflatex $(FRONTCOVER) 
+	echo \\newcommand{\\coverheight}{11.0in} > $(FRONTCOVER).tex
+	echo \\documentclass{C-ALE-cover} >> $(FRONTCOVER).tex
+	echo \\title{$(COURSETITLE)}\\subtitle{$(COURSE)}\\myversion{$(VERSION)} >> $(FRONTCOVER).tex
+	echo \\begin{document}\\makefront\\end{document} >> $(FRONTCOVER).tex
+	pdflatex $(FRONTCOVER) && pdflatex $(FRONTCOVER) && pdflatex $(FRONTCOVER)
 	rm $(FRONTCOVER).tex
 # BACK COVER
 $(BACKCOVER).pdf:
-	echo \\newcommand{\\coverheight}{11.0in} > $(BACKCOVER).tex  
-	echo \\documentclass{CALEcover} >> $(BACKCOVER).tex  
-	echo \\title{$(COURSETITLE)}\\subtitle{$(COURSE)}\\myversion{$(VERSION)} >> $(BACKCOVER).tex  
-	echo \\begin{document}\\makeback\\end{document} >> $(BACKCOVER).tex  
-	pdflatex $(BACKCOVER) && pdflatex $(BACKCOVER) && pdflatex $(BACKCOVER) 
+	echo \\newcommand{\\coverheight}{11.0in} > $(BACKCOVER).tex
+	echo \\documentclass{C-ALE-cover} >> $(BACKCOVER).tex
+	echo \\title{$(COURSETITLE)}\\subtitle{$(COURSE)}\\myversion{$(VERSION)} >> $(BACKCOVER).tex
+	echo \\begin{document}\\makeback\\end{document} >> $(BACKCOVER).tex
+	pdflatex $(BACKCOVER) && pdflatex $(BACKCOVER) && pdflatex $(BACKCOVER)
 	rm $(BACKCOVER).tex
 # SLIDE FRONT COVER
 #$(SLIDECOVER).pdf: $(INPUT)
 # remove $(INPUT) target as it malfunctions on RHEL6
 $(SLIDECOVER).pdf:
-	echo \\newcommand{\\coverheight}{6.375in} > $(SLIDECOVER).tex  
-	echo \\documentclass{CALEcover} >> $(SLIDECOVER).tex  
-	echo \\title{$(COURSETITLE)}\\subtitle{$(COURSE)}\\myversion{$(VERSION)} >> $(SLIDECOVER).tex  
-	echo \\begin{document}\\makefront\\end{document} >> $(SLIDECOVER).tex  
-	pdflatex $(SLIDECOVER) && pdflatex $(SLIDECOVER) && pdflatex $(SLIDECOVER) 
+	echo \\newcommand{\\coverheight}{6.375in} > $(SLIDECOVER).tex
+	echo \\documentclass{C-ALE-cover} >> $(SLIDECOVER).tex
+	echo \\title{$(COURSETITLE)}\\subtitle{$(COURSE)}\\myversion{$(VERSION)} >> $(SLIDECOVER).tex
+	echo \\begin{document}\\makefront\\end{document} >> $(SLIDECOVER).tex
+	pdflatex $(SLIDECOVER) && pdflatex $(SLIDECOVER) && pdflatex $(SLIDECOVER)
 	rm $(SLIDECOVER).tex
 
 help HELP usage:
@@ -146,8 +146,8 @@ spellcheck-list-files:
 
 # check for horizontal and vertical overruns:
 
-FINDOVERFULL findoverfull: $(COURSE).pdf 
-	@echo FINDING VERTICAL OVERRUNS .........	
+FINDOVERFULL findoverfull: $(COURSE).pdf
+	@echo FINDING VERTICAL OVERRUNS .........
 	@if grep -H -A3 -B5 'Overfull \\vbox ([0-9][0-9]' $(COURSE).log ; then echo "">/dev/null ; fi
 	@echo FINDING HORIZONTAL  OVERRUNS .........
 	@if grep --color -H -A3 -B5 'Overfull \\hbox ([0-9][0-9].*[0-9]' $(COURSE).log ; then echo "">/dev/null ; fi
@@ -155,9 +155,9 @@ FINDOVERFULL findoverfull: $(COURSE).pdf
 #################################
 clean:
 	rm -rf *~ *log *aux *dvi *.out *.lof *.mtc* *.bmt *.lot *.maf *.cpt \
-	*.ind *.ilg *.idx $(COURSE)_*  "*outline*" *COVER*.tex 
+	*.ind *.ilg *.idx $(COURSE)_*  "*outline*" *COVER*.tex
 
 veryclean: clean
 	rm -rf $(COURSE).pdf $(COURSE)-SLIDES.pdf $(COURSE)-*COVER*.pdf \
-	*.toc *.html RELEASE 
+	*.toc *.html RELEASE
 

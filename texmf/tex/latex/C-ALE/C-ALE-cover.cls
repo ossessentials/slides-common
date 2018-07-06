@@ -55,7 +55,7 @@
          };
          \node[anchor=south east] at
          ([xshift=-.75in,yshift=1.5in] current page.south east)
-         {\includegraphics[height=.75in]{linuxfoundation-cropped}};
+         {\includegraphics[height=.75in]{logo-c-ale-cropped}};
 
       \end{tikzpicture}
    }
@@ -78,32 +78,11 @@
          width=\singlewidth-1.3in, align=flush left, anchor=north west] at
          ([xshift=.75in,yshift=-1.2in]current page.north west)
          {
-            \textbf{\color{LFDeepBlue}Train with
-               the Linux Experts}\par\medskip The
-            Linux Foundation has a mandate to
-            train the next generation of Linux
-            developers, architects and system
-            administrators. We have done this by
-            creating the most comprehensive and
-            advanced Linux training program, and
-            we have made it customizable to suit
-            your needs.\par\medskip If your use of
-            Linux is crucial to your business,
-            count on The Linux Foundation to
-            ensure your developers or IT staff
-            will get the most out of Linux. We
-            have helped hundreds of companies
-            either move to Linux or gain advanced
-            knowledge of the technology to give
-            their development or operations teams
-            a competitive advantage.\par\medskip
-            To learn more, or to enroll in an
-            upcoming Linux training course visit
-            \textbf{\color{LFDeepBlue}training.linuxfoundation.org}.\par
+            \textbf{\color{LFDeepBlue}The Apprentice Linux Engineer Program}\par\medskip
          };
 
          \node[anchor=south west] at ([xshift=.75in,yshift=1.5in] current
-         page.south west) {\includegraphics[height=.75in]{linuxfoundation-cropped}};
+         page.south west) {\includegraphics[height=.75in]{logo-c-ale-cropped}};
 
       \end{tikzpicture}
    }

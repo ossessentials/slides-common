@@ -1,4 +1,4 @@
-\ProvidesClass{ALE}
+\ProvidesClass{C-ALE}
 \LoadClass{book}
 
 \newcommand{\dimensionsclass}{
@@ -19,9 +19,9 @@ outer=0.5in, inner=0.75in] {geometry}
 \g@addto@macro\@floatboxreset\centering
 \makeatother
 
-\newcommand{\lflogo}{
+\newcommand{\alelogo}{
   \begin{flushright}
-    \includegraphics[scale=0.8]{linuxfoundation-cropped.png}
+    \includegraphics[scale=0.8]{logo-c-ale-cropped.png}
   \end{flushright}
 }
 %%%%%%%%%% Change the date format to 08/12/2014
@@ -158,10 +158,10 @@ outer=0.5in, inner=0.75in] {geometry}
   \MakeFramed {\advance\hsize-2.5\leftmargin \FrameRestore}}
 {\endMakeFramed}
 
-\newcommand{\lfcopyright}{
-\textcopyright\  Copyright the Linux Foundation 2018.  All rights reserved.}
+\newcommand{\alecopyright}{
+\textcopyright\  CC-BY SA4}
 
-%%%%%%%%%%% header and footer crap
+%%%%%%%%%%% header and footer
 %%%%%%   This must come after the pagesize dimensions are set
 
 \usepackage{fancyhdr}
@@ -172,10 +172,10 @@ outer=0.5in, inner=0.75in] {geometry}
 \fancyhead[LO]{\textit{\rightmark}}
 \fancyhead[LE]{\thepage} 
 \fancyhead[RO]{\thepage} 
-\fancyfoot[C]{\textbf{\lfcopyright}}
-\fancyfoot[R]{\includegraphics[scale=0.25]{linuxfoundation-cropped}
+\fancyfoot[C]{\textbf{\alecopyright}}
+\fancyfoot[R]{\includegraphics[scale=0.25]{logo-c-ale-cropped}
 }
-\fancyfoot[L]{\textbf{\course: V\_\version by \speaker}}
+\fancyfoot[L]{\textbf{\course}}
 
 % this disables the boxes around links
 \usepackage[breaklinks,pdftex, pdfborderstyle={/S/U/W 0} ]{hyperref}
@@ -190,22 +190,17 @@ linkcolor=Red}
 %% just to refer to a file that you won't click on
 \newcommand{\file}[1]{\url{#1}}
 
-\newcommand{\topshit}{
+\newcommand{\topstuff}{
   \frontmatter
   \begin{titlepage}
     \begin{center}
       \includegraphics[scale=0.76]{\coverfigure}
     \end{center}
     \textbf{
-      \course: Version \version
+      \alecopyright
     }
     \par
-    \textbf{\lfcopyright}
-
-    \pagebreak
-    \input{longcopyright}
-
-%%    \lfcopyrighttext
+    \input{c-ale_description}
   \end{titlepage}
   \tablestuff
   \mainmatter
@@ -258,7 +253,7 @@ linkcolor=Red}
 \setcounter{page}{1}
     \stepcounter{labno}
     {
-      \lflogo
+      \alelogo
       \Large{\textbf{Exercise \fulllabno :  #1}}}    
 %% Cannot use \large in immeidat\write so use full macro def
 %    \immediate\write\myfile{\fulllabno\space\theabspage}
@@ -301,7 +296,7 @@ linkcolor=Red}
                      \hspace{10pt}
                      \begin{center}
                         \begin{Huge}
-%% \includegraphics[scale=0.25]{linuxfoundation-cropped}
+%% \includegraphics[scale=0.25]{logo-c-ale-cropped}
                            \textbf{#1}
                         \end{Huge}
                      \end{center}
