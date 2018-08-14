@@ -21,7 +21,7 @@ outer=0.5in, inner=0.75in] {geometry}
 
 \newcommand{\alelogo}{
   \begin{flushright}
-    \includegraphics[scale=0.8]{logo-c-ale-cropped.png}
+    \includegraphics[scale=0.6]{logo-c-ale-cropped.png}
   \end{flushright}
 }
 %%%%%%%%%% Change the date format to 08/12/2014
@@ -173,7 +173,8 @@ outer=0.5in, inner=0.75in] {geometry}
 \fancyhead[LE]{\thepage} 
 \fancyhead[RO]{\thepage} 
 \fancyfoot[C]{\textbf{\alecopyright}}
-\fancyfoot[R]{\includegraphics[scale=0.25]{logo-c-ale-cropped}
+%%\fancyfoot[R]{\includegraphics[scale=0.25]{logo-c-ale-cropped}
+\fancyfoot[R]{\includegraphics[scale=0.15]{logo-c-ale-cropped}
 }
 \fancyfoot[L]{\textbf{\course}}
 
@@ -233,40 +234,15 @@ linkcolor=Red}
   \setcounter{labno}{0}
 }{}
 
-\newtoggle{split}
-\togglefalse{split}
-\DeclareOption{splitlabs}{\toggletrue{split}}
-
 \ProcessOptions
-\ExecuteOptions{splitlabs}
 
 %% separate lab page number stuff
-\iftoggle{split}{
-  \newwrite\myfile
-  \immediate\openout\myfile=labcontents.data
-}{}
 
-\iftoggle{split}
-{
-  \newenvironment{exe}[1]{
-    \clearpage
-\setcounter{page}{1}
-    \stepcounter{labno}
-    {
-      \alelogo
-      \Large{\textbf{Exercise \fulllabno :  #1}}}    
-%% Cannot use \large in immeidat\write so use full macro def
-%    \immediate\write\myfile{\fulllabno\space\theabspage}
-      \immediate\write\myfile{\thechapter.\thelabno\space\theabspage}
-  }{
-    \immediate\write\myfile{\theabspage}
-  }
-}{
   \newenvironment{exe}[1]{
     \stepcounter{labno}
     {\Large{\textbf{Exercise \fulllabno :  #1}}}
   } {}
-}
+
 \newenvironment{sol}{
   {\Large{\textbf{Solution \fulllabno} } } }
 {}
@@ -281,46 +257,8 @@ linkcolor=Red}
      }
    \end{minipage}
    \vfill
-
-
 }
 \fi
-\newsavebox{\coopslidebox}
-\renewenvironment{frame}[1]{
-   \begin{lrbox}{\coopslidebox}
-\begin{minipage}[c][4.7in][t]{6.9in}
-         \begin{Large}
-            \colorbox{NavyBlue}{
-               \parbox[c][8ex][c]{\dimexpr\linewidth-3\fboxsep}{
-                  \textcolor{white}{
-                     \hspace{10pt}
-                     \begin{center}
-                        \begin{Huge}
-%% \includegraphics[scale=0.25]{logo-c-ale-cropped}
-                           \textbf{#1}
-                        \end{Huge}
-                     \end{center}
-                  }
-               } 
-            }
-            \parindent0pt
-            \vfill
-\RecustomVerbatimEnvironment
-{raw}{Verbatim}
-{fontsize=\large\color{blue}}
-            \begin{quote}
-            }{ 
-            \end{quote}
-         \end{Large}
-         \vfill
-         \hfill
-      \end{minipage}
-   \end{lrbox}
-   \fboxsep3mm
-   \fcolorbox{black}{white}
-   {\usebox{\coopslidebox}
-   }
-}
 
 \newif\ifEMBEDDED
 \EMBEDDEDfalse
