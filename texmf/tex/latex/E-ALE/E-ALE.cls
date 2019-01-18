@@ -64,6 +64,8 @@ outer=0.5in, inner=0.75in] {geometry}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage{verbatim}
 \usepackage[textfont=bf,tableposition=top,figureposition=top]{caption}
+\usepackage{caption}
+\usepackage{subcaption}
 \usepackage{wrapfig}
 \usepackage{xcolor}
 \usepackage{longtable}

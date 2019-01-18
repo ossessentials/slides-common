@@ -54,8 +54,8 @@
             \medskip\hfill{\color{LFLightBlue}\LARGE Version \@myversion\par}
          };
          \node[anchor=south east] at
-         ([xshift=-.75in,yshift=1.5in] current page.south east)
-         {\includegraphics[height=.75in]{logo-e-ale-cropped}};
+         ([xshift=0in,yshift=0in] current page.south east)
+         {\includegraphics[height=3in]{logo-e-ale-cropped}};
 
       \end{tikzpicture}
    }
