@@ -96,7 +96,7 @@ COVERS covers: $(FRONTCOVER).pdf $(BACKCOVER).pdf $(SLIDECOVER).pdf
 # remove $(INPUT) target as it malfunctions on RHEL6
 $(FRONTCOVER).pdf:
 	echo \\newcommand{\\coverheight}{11.0in} > $(FRONTCOVER).tex
-	echo \\documentclass{E-ALE-cover} >> $(FRONTCOVER).tex
+	echo \\documentclass{ossessentials-cover} >> $(FRONTCOVER).tex
 	echo \\title{$(COURSETITLE)}\\subtitle{$(COURSE)}\\myversion{$(VERSION)} >> $(FRONTCOVER).tex
 	echo \\begin{document}\\makefront\\end{document} >> $(FRONTCOVER).tex
 	pdflatex $(FRONTCOVER) && pdflatex $(FRONTCOVER) && pdflatex $(FRONTCOVER)
@@ -104,7 +104,7 @@ $(FRONTCOVER).pdf:
 # BACK COVER
 $(BACKCOVER).pdf:
 	echo \\newcommand{\\coverheight}{11.0in} > $(BACKCOVER).tex
-	echo \\documentclass{E-ALE-cover} >> $(BACKCOVER).tex
+	echo \\documentclass{ossessentials-cover} >> $(BACKCOVER).tex
 	echo \\title{$(COURSETITLE)}\\subtitle{$(COURSE)}\\myversion{$(VERSION)} >> $(BACKCOVER).tex
 	echo \\begin{document}\\makeback\\end{document} >> $(BACKCOVER).tex
 	pdflatex $(BACKCOVER) && pdflatex $(BACKCOVER) && pdflatex $(BACKCOVER)
@@ -114,7 +114,7 @@ $(BACKCOVER).pdf:
 # remove $(INPUT) target as it malfunctions on RHEL6
 $(SLIDECOVER).pdf:
 	echo \\newcommand{\\coverheight}{6.375in} > $(SLIDECOVER).tex
-	echo \\documentclass{E-ALE-cover} >> $(SLIDECOVER).tex
+	echo \\documentclass{ossessentials-cover} >> $(SLIDECOVER).tex
 	echo \\title{$(COURSETITLE)}\\subtitle{$(COURSE)}\\myversion{$(VERSION)} >> $(SLIDECOVER).tex
 	echo \\begin{document}\\makefront\\end{document} >> $(SLIDECOVER).tex
 	pdflatex $(SLIDECOVER) && pdflatex $(SLIDECOVER) && pdflatex $(SLIDECOVER)
